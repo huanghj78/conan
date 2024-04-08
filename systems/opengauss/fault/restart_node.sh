@@ -1,0 +1,2 @@
+nodeNum=$1
+docker exec -e GAUSSHOME=/home/opengauss/openGauss/install node$nodeNum env LD_LIBRARY_PATH=/home/opengauss/openGauss/install/lib /home/opengauss/openGauss/install/bin/gs_ctl restart -D /home/opengauss/opengauss/data -M standby

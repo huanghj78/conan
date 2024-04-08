@@ -1,0 +1,75 @@
+version: "3.6"
+services:
+  node1:
+    image: rqlited:conan
+    volumes:
+      - node1-data:/rqlite-data
+    expose:
+      - 2379
+      - 2380
+    networks:
+      rqlite:
+        ipv4_address: 172.16.237.100
+    command:
+      - /usr/local/bin/rqlited
+      - --node-id=1
+      - --http-addr
+      -  172.16.237.100:2379
+      - --raft-addr
+      - 172.16.237.100:2380
+      - /rqlite-data
+  node2:
+    image: rqlited:conan
+    volumes:
+      - node2-data:/rqlite-data
+    networks:
+      rqlite:
+        ipv4_address: 172.16.237.101
+    expose:
+      - 2379
+      - 2380
+    command:
+      - /usr/local/bin/rqlited
+      - --node-id=2
+      - --http-addr
+      -  172.16.237.101:2379
+      - --raft-addr
+      -  172.16.237.101:2380
+      - --join 
+      -  172.16.237.100:2380
+      - /rqlite-data
+
+  node3:
+    image: rqlited:conan
+    volumes:
+      - node3-data:/rqlite-data
+    networks:
+      rqlite:
+        ipv4_address: 172.16.237.102
+    expose:
+      - 2379
+      - 2380
+    command:
+      - /usr/local/bin/rqlited
+      - --node-id=3
+      - --http-addr
+      -  172.16.237.102:2379
+      - --raft-addr
+      -  172.16.237.102:2380
+      - --join 
+      -  172.16.237.100:2380
+      - /rqlite-data
+
+volumes:
+  node1-data:
+  node2-data:
+  node3-data:
+
+networks:
+  rqlite:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.237.0/24

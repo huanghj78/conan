@@ -1,0 +1,4 @@
+[
+    {"pointType": "FTP", "MsgType": "MsgApp", "Who": "Leader", "When": "Before", "faultActionType": "", "Args": ""},
+    {"pointType": "FIP", "MsgType": "", "Who": "", "When": "", "faultActionType": "Delay", "Args": "100"}
+]

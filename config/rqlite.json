@@ -1,0 +1,5 @@
+{
+    "mode": "Reproduce",
+    "system": "rqlite",
+    "interval": 30
+}
