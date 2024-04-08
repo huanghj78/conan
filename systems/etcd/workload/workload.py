@@ -1,5 +1,6 @@
 import subprocess
 import shlex
+import os
 from datetime import datetime, time
 import signal
 from subprocess import TimeoutExpired
@@ -8,6 +9,7 @@ from subprocess import TimeoutExpired
 timeout = 30
 num = 1
 
+path = os.environ.get("CONAN_PATH")
 def run_shell_command(command, timeout):
     try:
         cmd_args = shlex.split(command)
@@ -28,7 +30,7 @@ print(begin_time_with_ms)
 
 # time.sleep(5)
 for i in range(num):
-    ret_code, stdout, stderr = run_shell_command(f"../etcdctl --dial-timeout=5s  --endpoints=http://172.16.238.100:2379,http://172.16.238.101:2379,http://172.16.238.102:2379 put k{i} v{i}", timeout)
+    ret_code, stdout, stderr = run_shell_command(f"{path}/systems/etcd/etcdctl --dial-timeout=5s  --endpoints=http://172.16.238.100:2379,http://172.16.238.101:2379,http://172.16.238.102:2379 put k{i} v{i}", timeout)
     if ret_code == 0:
         if stdout.decode().split('\n')[0] != "OK":
             print("Put error")

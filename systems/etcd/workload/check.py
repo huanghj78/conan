@@ -1,5 +1,6 @@
 import subprocess
 import shlex
+import os
 import time
 import signal
 from subprocess import TimeoutExpired
@@ -8,7 +9,7 @@ from subprocess import TimeoutExpired
 timeout = 5
 num = 100
 
-
+path = os.environ.get("CONAN_PATH")
 def run_shell_command(command, timeout):
     try:
         cmd_args = shlex.split(command)
@@ -24,7 +25,7 @@ def run_shell_command(command, timeout):
 
 for i in range(num):
     v = f"v{i}"
-    ret_code, stdout, stderr = run_shell_command(f"../etcdctl  --endpoints=http://172.16.238.100:2379 get k{i}", timeout)
+    ret_code, stdout, stderr = run_shell_command(f"{path}/systems/etcd/etcdctl  --endpoints=http://172.16.238.100:2379 get k{i}", timeout)
     if ret_code == 0:
         if len(stdout.decode().split('\n')) != 3:
             print("No Value")
@@ -43,7 +44,7 @@ for i in range(num):
 
 for i in range(num):
     v = f"v{i}"
-    ret_code, stdout, stderr = run_shell_command(f"etcdctl  --endpoints=http://172.16.238.101:2379 get k{i}", timeout)
+    ret_code, stdout, stderr = run_shell_command(f"{path}/systems/etcd/etcdctl  --endpoints=http://172.16.238.101:2379 get k{i}", timeout)
     if ret_code == 0:
         if len(stdout.decode().split('\n')) != 3:
             print("No Value")
@@ -61,7 +62,7 @@ for i in range(num):
 
 for i in range(num):
     v = f"v{i}"
-    ret_code, stdout, stderr = run_shell_command(f"etcdctl  --endpoints=http://172.16.238.102:2379 get k{i}", timeout)
+    ret_code, stdout, stderr = run_shell_command(f"{path}/systems/etcd/etcdctl  --endpoints=http://172.16.238.102:2379 get k{i}", timeout)
     if ret_code == 0:
         if len(stdout.decode().split('\n')) != 3:
             print("No Value")

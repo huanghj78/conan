@@ -1,0 +1,1 @@
+[{"msgType":"MsgApp","who":"Follower","when":"Before","faultActionList":"RestartNode 1,EnumMessageFault false true false 0 0"},{"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumMessageFault false false true 0 -1"}]

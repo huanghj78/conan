@@ -1,0 +1,21 @@
+2024/04/08 20:38:21 [INFO] /root/Conan/server/server.go:131 Start in Detect mode
+2024/04/08 20:38:21 [INFO] /root/Conan/server/server.go:132 Target System is etcd
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:35 Setup etcd cluster
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:37 python3 /root/Conan/systems/etcd/setup.py
+2024/04/08 20:38:21 [INFO] /root/Conan/server/injector.go:19 Injector start
+2024/04/08 20:38:21 [INFO] /root/Conan/server/checker.go:19 Checker Start
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:26 Monitor start
+2024/04/08 20:38:21 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgApp][FIP EnumRestartNode Node3][FIP EnumCPUHog 90 for 2s at node1][FIP EnumCPUHog 53 for 2s at node3][FIP EnumMessageFault  Delay for 1.853s ]
+2024/04/08 20:38:21 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgAppResp][FIP EnumRestartNode Node1][FIP EnumRestartNode Node1][FIP EnumNetworkDelay 1047ms for 3s at node3][FIP EnumMessageFault  Delay for 126ms  Modify term -1 ]
+2024/04/08 20:38:21 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgApp][FIP EnumNetworkDelay 678ms for 3s at node3][FIP EnumNetworkDelay 919ms for 4s at node1][FIP EnumMessageFault  Delay for 1.82s ]
+2024/04/08 20:38:21 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgAppResp][FIP EnumNetworkLoss 27 at node3 for 1s][FIP EnumMessageFault  Delay for 1.043s  Modify term 3 ]
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:52 /root/Conan/systems/etcd/findLeader.sh
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:59 Current leader num /root/Conan
+/root/Conan
+/root/Conan
+2
+
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:61 Run etcd workload
+2024/04/08 20:38:21 [INFO] /root/Conan/server/monitor.go:63 python3 /root/Conan/systems/etcd/workload/workload.py
+2024/04/08 20:38:21 [ERROR] /root/Conan/server/monitor.go:72 20:38:21.282661
+
