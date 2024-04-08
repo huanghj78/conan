@@ -18,6 +18,8 @@ We appied Conan to 3 widely used distributed databases, including etcd, rqlite a
 
 ## Require
 ```
+Docker
+docker-compose 2.6
 go 1.21.0
 python 3.6
 ```
