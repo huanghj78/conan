@@ -94,7 +94,7 @@ func main() {
 	// 获取当前日期和时间
 	currentTime := time.Now().Format("2006-01-02_15:04")
 	// 构建日志文件名
-	logFileName := "cpfi_" + currentTime + ".log"
+	logFileName := "conan_" + currentTime + ".log"
 	logFilePath := filepath.Join(currentDir, "../logs", logFileName)
 	logFile, err := os.Create(logFilePath)
 	if err != nil {
@@ -107,7 +107,7 @@ func main() {
 	args := os.Args
 	var configPath string
 	if len(args) < 2 {
-		logger.Errorf("Usage: ./cpfi-server config_path")
+		logger.Errorf("Usage: ./conan-server config_path")
 		return
 	} else {
 		configPath = args[1]
