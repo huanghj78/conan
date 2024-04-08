@@ -1,1 +1,0 @@
-[{"msgType":"MsgAppResp","who":"Follower","when":"Before","faultActionList":"EnumNetworkLoss 88 1 2,EnumCPUHog 55 3 1,EnumNetworkDelay 1238 3 5,EnumMessageFault true false true 224 -5"}]

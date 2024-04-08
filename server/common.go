@@ -52,13 +52,6 @@ func isMatch(no AppendEntriesNotification, fp FaultPoint) bool {
 
 func checkConstraints(seq *FaultSequence) *FaultSequence {
 	for _, fp := range seq.seq {
-		for idx, ac := range fp.faultActionList {
-			if ac.getActionType() == EnumMessageFault {
-				if idx != len(fp.faultActionList)-1 {
-					fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
-				}
-			}
-		}
 		ac := fp.faultActionList[len(fp.faultActionList)-1]
 		if ac.getActionType() != EnumMessageFault {
 			var action Action
@@ -134,7 +127,13 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 			}
 			lastActionType = curActionType
 		}
-
+		for idx, ac := range fp.faultActionList {
+			if ac.getActionType() == EnumMessageFault {
+				if idx != len(fp.faultActionList)-1 {
+					fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
+				}
+			}
+		}
 	}
 	return seq
 }
