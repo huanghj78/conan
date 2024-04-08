@@ -12,7 +12,7 @@ leader_count=0
 # 循环遍历每个节点
 for ((i=0; i<${#endpoints[@]}; i++)); do
     # 执行etcdctl命令，获取节点信息
-    result=$(etcdctl --endpoints=${endpoints[$i]} endpoint status)
+    result=$(./etcdctl --endpoints=${endpoints[$i]} endpoint status)
 
     # 提取第五个参数，判断是否为leader节点
     is_leader=$(echo $result | awk '{print $6}')
