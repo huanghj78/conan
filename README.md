@@ -11,3 +11,12 @@ We appied Conan to 3 widely used distributed databases, including etcd, rqlite a
 
 
 ## Getting Started
+| Bug ID | Description | 
+|-----|-----|
+| [etcd-17332](https://github.com/etcd-io/etcd/issues/17332) | Inconsistent behaviors between server and client. | 
+| [rqlite-1629](https://github.com/rqlite/rqlite/pull/1629) | Duplicate data insertion. | 
+| [rqlite-1633](https://github.com/rqlite/rqlite/pull/1633) | Inappropriate error messages.  | 
+| [rqlite-1712](https://github.com/rqlite/rqlite/issues/1712) | Unexpected election. | 
+| [openGauss-I8I19W](https://gitee.com/opengauss/openGauss-server/issues/I8I19W) | Data inconsistency between nodes. | 
+| [openGauss-I8H1YQ](https://gitee.com/opengauss/openGauss-server/issues/I8H1YQ) | No Leader. | 
+| [openGauss-I8MGB4](https://gitee.com/opengauss/openGauss-server/issues/I8MGB4) | No Leader. |
