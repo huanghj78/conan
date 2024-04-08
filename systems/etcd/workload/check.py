@@ -24,7 +24,7 @@ def run_shell_command(command, timeout):
 
 for i in range(num):
     v = f"v{i}"
-    ret_code, stdout, stderr = run_shell_command(f"etcdctl  --endpoints=http://172.16.238.100:2379 get k{i}", timeout)
+    ret_code, stdout, stderr = run_shell_command(f"../etcdctl  --endpoints=http://172.16.238.100:2379 get k{i}", timeout)
     if ret_code == 0:
         if len(stdout.decode().split('\n')) != 3:
             print("No Value")
