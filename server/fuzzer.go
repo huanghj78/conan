@@ -168,7 +168,7 @@ func (fu *Fuzzer) fuzzing() *FaultSequence {
 		bestSample := 0.0
 		for _, item := range fu.opList {
 			sample := item.sample()
-			logger.Infoln("sample", sample)
+			// logger.Infoln("sample", sample)
 			if sample > bestSample {
 				bestSample = sample
 				op = item
