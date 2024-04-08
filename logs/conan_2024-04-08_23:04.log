@@ -1,0 +1,19 @@
+2024/04/08 23:04:31 [INFO] /root/Conan/server/server.go:122 Start in Detect mode
+2024/04/08 23:04:31 [INFO] /root/Conan/server/server.go:123 Target System is etcd
+2024/04/08 23:04:31 [INFO] /root/Conan/server/monitor.go:35 Setup etcd cluster
+2024/04/08 23:04:31 [INFO] /root/Conan/server/monitor.go:37 /root/Conan/systems/etcd/setup.sh /root/Conan
+2024/04/08 23:04:31 [INFO] /root/Conan/server/injector.go:19 Injector start
+2024/04/08 23:04:31 [INFO] /root/Conan/server/checker.go:19 Checker Start
+2024/04/08 23:04:31 [INFO] /root/Conan/server/monitor.go:26 Monitor start
+2024/04/08 23:04:31 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgApp][FIP EnumNetworkDelay 523ms for 3s at node1][FIP EnumCPUHog 63 for 2s at node3][FIP EnumMessageFault ]
+2024/04/08 23:04:31 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgAppResp][FIP EnumCPUHog 27 for 3s at node1][FIP EnumNetworkDelay 752ms for 3s at node1][FIP EnumNetworkLoss 35 at node3 for 5s][FIP EnumMessageFault  Delay for 2.036s ]
+2024/04/08 23:04:31 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgApp][FIP EnumCPUHog 88 for 4s at node1][FIP EnumNetworkLoss 6 at node3 for 5s][FIP EnumNetworkLoss 2 at node3 for 5s][FIP EnumMessageFault ]
+2024/04/08 23:04:31 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgAppResp][FIP EnumNetworkLoss 79 at node2 for 3s][FIP EnumNetworkLoss 77 at node3 for 1s][FIP EnumMessageFault  Delay for 1.407s ]
+2024/04/08 23:04:40 [INFO] /root/Conan/server/monitor.go:53 /root/Conan/systems/etcd/findLeader.sh
+2024/04/08 23:04:40 [INFO] /root/Conan/server/monitor.go:60 Current leader num 2
+
+2024/04/08 23:04:40 [INFO] /root/Conan/server/monitor.go:62 Run etcd workload
+2024/04/08 23:04:40 [INFO] /root/Conan/server/monitor.go:64 python3 /root/Conan/systems/etcd/workload/workload.py /root/Conan
+2024/04/08 23:04:40 [INFO] /root/Conan/server/monitor.go:87 Current leader num 2
+
+2024/04/08 23:04:40 [INFO] /root/Conan/server/server.go:31 Start Server....

@@ -1,13 +1,14 @@
 import subprocess
 import shlex
 import os
+import sys
 from datetime import datetime, time
 import signal
 from subprocess import TimeoutExpired
 
 # 设置超时时间（单位：秒）
 timeout = 30
-num = 1
+num = 10
 
 path = os.environ.get("CONAN_PATH")
 def run_shell_command(command, timeout):
@@ -28,7 +29,6 @@ begin_time_with_ms = begin_time.strftime('%H:%M:%S.%f')
 
 print(begin_time_with_ms)
 
-# time.sleep(5)
 for i in range(num):
     ret_code, stdout, stderr = run_shell_command(f"{path}/systems/etcd/etcdctl --dial-timeout=5s  --endpoints=http://172.16.238.100:2379,http://172.16.238.101:2379,http://172.16.238.102:2379 put k{i} v{i}", timeout)
     if ret_code == 0:

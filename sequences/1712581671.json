@@ -1,0 +1,1 @@
+[{"msgType":"MsgAppResp","who":"Leader","when":"Before","faultActionList":"EnumMessageFault true false false 1181 0"},{"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumNetworkLoss 33 2 1,RestartNode 3,EnumNetworkDelay 1372 3 2,EnumMessageFault true false true 169 -1"}]

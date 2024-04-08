@@ -33,11 +33,12 @@ func (m *Monitor) initialCollect() {
 
 func (m *Monitor) setupCluster() {
 	logger.Infof("Setup %s cluster\n", targetSystem)
-	cmd := fmt.Sprintf("python3 %s/systems/%s/setup.sh", projectPath, targetSystem)
+	cmd := fmt.Sprintf("%s/systems/%s/setup.sh", projectPath, targetSystem)
 	logger.Infoln(cmd)
 	output, err := exec.Command("sh", "-c", cmd).Output()
 	if err != nil {
 		logger.Errorln(string(output))
+		logger.Errorln(err)
 		os.Exit(1)
 	}
 }

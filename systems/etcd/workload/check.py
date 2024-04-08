@@ -1,14 +1,16 @@
 import subprocess
 import shlex
 import os
+import sys
 import time
 import signal
 from subprocess import TimeoutExpired
 
 # 设置超时时间（单位：秒）
 timeout = 5
-num = 100
+num = 10
 
+# path = sys.argv[1]
 path = os.environ.get("CONAN_PATH")
 def run_shell_command(command, timeout):
     try:

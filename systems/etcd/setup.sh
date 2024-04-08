@@ -1,3 +1,4 @@
+# projectPath=$1
 docker-compose -f $CONAN_PATH/systems/etcd/docker-compose.yaml down -v
 docker-compose -f $CONAN_PATH/systems/etcd/docker-compose.yaml up -d
 
