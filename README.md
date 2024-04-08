@@ -6,11 +6,6 @@ Conan is a testing framework for detecting consensus issues in distributed datab
 
 ## Bug Detected by Conan
 We appied Conan to 3 widely used distributed databases, including etcd, rqlite and openGauss. Conan successfully detects 8 consensus issues in these real-world databases, 6 of which are previous-unknown issues and 5 of them have been confirmed by developers. 
-
-
-
-
-## Getting Started
 | Bug ID | Description | 
 |-----|-----|
 | [etcd-17332](https://github.com/etcd-io/etcd/issues/17332) | Inconsistent behaviors between server and client. | 
@@ -20,3 +15,16 @@ We appied Conan to 3 widely used distributed databases, including etcd, rqlite a
 | [openGauss-I8I19W](https://gitee.com/opengauss/openGauss-server/issues/I8I19W) | Data inconsistency between nodes. | 
 | [openGauss-I8H1YQ](https://gitee.com/opengauss/openGauss-server/issues/I8H1YQ) | No Leader. | 
 | [openGauss-I8MGB4](https://gitee.com/opengauss/openGauss-server/issues/I8MGB4) | No Leader. |
+
+## Require
+```
+go 1.21.0
+python 3.6
+```
+
+## Getting Started
+### Initial directory, pull docker images, complie conan server
+```
+./init.sh
+```
+### 
