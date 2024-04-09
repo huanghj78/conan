@@ -36,7 +36,7 @@ def main():
             create_table(cursor)
             
             # 插入数据
-            # insert_data(cursor, 1, 10000)
+            insert_data(cursor, 1, 1000)
 
             # 检查插入的数据
             # check_inserted_data(cursor, 1, 100)

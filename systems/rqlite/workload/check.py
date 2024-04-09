@@ -24,7 +24,7 @@ def main():
         with connection.cursor() as cursor:
 
             # 检查插入的数据
-            check_inserted_data(cursor, 1, 100)
+            check_inserted_data(cursor, 1, 1000)
     finally:
         # 关闭连接
         connection.close()

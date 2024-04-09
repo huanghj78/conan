@@ -103,7 +103,7 @@ func (m *Monitor) runWorkload(seq *FaultSequence) {
 		seq.score = timeoutWeight*timeoutValue + errorWeight*isError + electionWeight*isElection + statusWeight*isStatus
 		logger.Infoln("Fitness score:", seq.score)
 		// seq.opertor.update_UCB(float64(seq.score))
-		seq.opertor.update_TS(float64(seq.score))
+		seq.operator.update_TS(float64(seq.score))
 	}
 
 }

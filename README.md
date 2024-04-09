@@ -24,6 +24,33 @@ go 1.21.0
 python 3.6
 ```
 
+## Directory Structure
+```
+Conan
+├── client # Conan client api
+├── config # Configuration required to start Conan server 
+├── images
+├── init.sh # Initialize directory, pull docker images and install tools
+├── logs # Conan server log
+├── README.md
+├── reproduce # Notify Conan server to start processing client's request
+├── run.sh # Run Conan server
+├── scripts # ChaosBlade tool
+├── sequences # Fault sequences for reproducing issues. 
+├── server # Conan server code
+└── systems # Target system's necessary artifacts
+    ├── etcd
+    │   ├── docker-compose.yaml 
+    │   ├── etcdctl
+    │   ├── fault
+    │   ├── findLeader.sh
+    │   ├── raft
+    │   ├── setup.py
+    │   ├── setup.sh
+    │   └── workload
+    ...
+```
+
 ## Getting Started
 ### Initial directory, pull docker images, complie conan server
 ```
@@ -33,45 +60,27 @@ python 3.6
 ```
 # ./run.sh system mode 
 ```
-* Detect mode
+#### Detect mode
 ```
 ./run.sh etcd Detect
 ```
-> 2024/04/09 14:43:08 [INFO] /root/Conan/server/server.go:131 Start in Detect mode
-2024/04/09 14:43:08 [INFO] /root/Conan/server/server.go:132 Target System is etcd
-2024/04/09 14:43:08 [INFO] /root/Conan/server/monitor.go:35 Setup etcd cluster
-2024/04/09 14:43:08 [INFO] /root/Conan/server/injector.go:19 Injector start
-2024/04/09 14:43:08 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgApp][FIP EnumCPUHog 92 for 4s at node2][FIP EnumRestartNode Node2][FIP EnumNetworkLoss 97 at node1 for 3s][FIP EnumMessageFault  Modify term 0 ]
-2024/04/09 14:43:08 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Leader MsgAppResp][FIP EnumMessageFault  Delay for 813ms ]
-2024/04/09 14:43:08 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgApp][FIP EnumMessageFault  Delay for 1.175s ]
-2024/04/09 14:43:08 [INFO] /root/Conan/server/fuzzer.go:122 Init seed seq [FTP Before Follower MsgAppResp][FIP EnumNetworkLoss 80 at node1 for 4s][FIP EnumMessageFault  Delay for 794ms ]
-2024/04/09 14:43:08 [INFO] /root/Conan/server/monitor.go:26 Monitor start
-2024/04/09 14:43:08 [INFO] /root/Conan/server/checker.go:19 Checker Start
-2024/04/09 14:43:24 [INFO] /root/Conan/server/monitor.go:60 Current leader num: 2
-2024/04/09 14:43:24 [INFO] /root/Conan/server/monitor.go:61 Run etcd workload
-2024/04/09 14:43:25 [INFO] /root/Conan/server/monitor.go:86 Current leader num: 2
-2024/04/09 14:43:25 [INFO] /root/Conan/server/server.go:32 Start Server....
-2024/04/09 14:43:33 [INFO] /root/Conan/server/fuzzer.go:163 select seed seq [FTP Before Follower MsgApp][FIP EnumMessageFault  Delay for 1.175s ]
-2024/04/09 14:43:33 [INFO] /root/Conan/server/fuzzer.go:177 Select op *main.ModifyFIPOp
-2024/04/09 14:43:33 [INFO] /root/Conan/server/operator.go:348 Modify args at 0 0
-2024/04/09 14:43:33 [INFO] /root/Conan/server/monitor.go:35 Setup etcd cluster
-2024/04/09 14:43:51 [INFO] /root/Conan/server/injector.go:30 Injector run, receive testSeq [FTP Before Follower MsgApp][FIP EnumMessageFault Omit]
-2024/04/09 14:43:51 [INFO] /root/Conan/server/monitor.go:60 Current leader num: 2
-2024/04/09 14:43:51 [INFO] /root/Conan/server/monitor.go:61 Run etcd workload
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:165 notification:  Before Leader MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:166 FaultPoint:  Before Follower MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:165 notification:  After Leader MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:166 FaultPoint:  Before Follower MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:165 notification:  Before Leader MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:166 FaultPoint:  Before Follower MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:165 notification:  After Leader MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:166 FaultPoint:  Before Follower MsgApp
-2024/04/09 14:43:52 [INFO] /root/Conan/server/injector.go:170 Inject Fault!
-2024/04/09 14:43:52 [INFO] /root/Conan/server/monitor.go:86 Current leader num: 2
-2024/04/09 14:43:52 [INFO] /root/Conan/server/monitor.go:104 Fitness score: 0
-2024/04/09 14:43:58 [INFO] /root/Conan/server/injector.go:42 Injector stop
-2024/04/09 14:43:58 [INFO] /root/Conan/server/checker.go:27 Checker run
-2024/04/09 14:43:59 [INFO] /root/Conan/server/checker.go:36 =====================CHECK PASS=====================
+![detect log](./images/log.png)
 
-* Reproduce mode
+
+#### Reproduce mode
+* Start Conan server
+```
+./run.sh etcd Reproduce
+```
+![reproduce log](./images/reproduce-log1.png)
+* Setup cluster
+```
+docker-compose -f ./systems/etcd/docker-compose.yaml up
+```
+* Notify server 
+```
+./reproduce/reproduce ./sequences/etcd-17332.json
+```
+
+
 

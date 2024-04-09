@@ -63,10 +63,10 @@ func (fp FaultPoint) run(ch chan string, msg *client.CPFI_msg) {
 }
 
 type FaultSequence struct {
-	seq     []FaultPoint
-	score   int
-	opertor Operator
-	count   int
+	seq      []FaultPoint
+	score    int
+	operator Operator
+	count    int
 }
 
 func insertIntoSeedBank(sequence *FaultSequence) {

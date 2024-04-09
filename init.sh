@@ -1,5 +1,4 @@
 mkdir logs
-mkdir sequences
 
 docker pull 13822030416/etcd:conan
 docker pull 13822030416/rqlite:conan

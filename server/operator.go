@@ -70,12 +70,12 @@ func (op *InsertFTPOp) get_UCB() float64 {
 
 func (op *InsertFTPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	seqIndex := rand.Intn(len(seq.seq) + 1)
 	var newFaultPoint FaultPoint
 	index := rand.Intn(len(TriggerList))
@@ -104,12 +104,12 @@ type InsertFIPOp struct {
 
 func (op *InsertFIPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	seqIndex := rand.Intn(len(seq.seq))
 	curFaultPoint := seq.seq[seqIndex]
 	// 不能插在最后(不用加一)
@@ -163,12 +163,12 @@ type DeleteFTPOp struct {
 
 func (op *DeleteFTPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	if len(seq.seq) <= 1 {
 		return seq
 	}
@@ -207,12 +207,12 @@ type DeleteFIPOp struct {
 
 func (op *DeleteFIPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	seqIndex := rand.Intn(len(seq.seq))
 	if len(seq.seq[seqIndex].faultActionList) <= 1 {
 		return nil
@@ -253,12 +253,12 @@ type ModifyFTPOp struct {
 
 func (op *ModifyFTPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	seqIndex := rand.Intn(len(seq.seq))
 	for _, trigger := range TriggerList {
 		if !seq.seq[seqIndex].isMatch(trigger) {
@@ -311,12 +311,12 @@ type ModifyFIPOp struct {
 // ToDo: 不要随机修改，有策略地修改
 func (op *ModifyFIPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	seqIndex := rand.Intn(len(seq.seq))
 	fpIndex := rand.Intn(len(seq.seq[seqIndex].faultActionList))
 	curFaultPoint := seq.seq[seqIndex]
@@ -378,12 +378,12 @@ type InverseFTPOp struct {
 
 func (op *InverseFTPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	if len(seq.seq) <= 1 {
 		return nil
 	}
@@ -428,12 +428,12 @@ type InverseFIPOp struct {
 
 func (op *InverseFIPOp) run(seedSeq *FaultSequence) *FaultSequence {
 	seq := &FaultSequence{
-		opertor: op,
-		score:   NormalScore,
-		seq:     make([]FaultPoint, 0),
-		count:   0,
+		operator: op,
+		score:    seedSeq.score,
+		seq:      make([]FaultPoint, len(seedSeq.seq)),
+		count:    seedSeq.count,
 	}
-	seq.seq = append(seq.seq, seedSeq.seq...)
+	copy(seq.seq, seedSeq.seq)
 	if len(seq.seq) <= 1 {
 		return nil
 	}

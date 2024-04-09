@@ -1,0 +1,3 @@
+[
+    {"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumNetworkLoss 100 2 10,EnumMessageFault false false false 0 0"}
+]

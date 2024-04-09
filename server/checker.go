@@ -16,7 +16,7 @@ type Checker struct {
 }
 
 func (c *Checker) start() {
-	logger.Infoln("Checker Start")
+	logger.Infoln("Checker start")
 }
 
 func (c *Checker) run(seq *FaultSequence) {

@@ -24,7 +24,7 @@ if __name__ == "__main__":
     leader_node_id = get_leader_node_id(rqlite_url)
 
     if leader_node_id is not None:
-        print(f"The leader node ID is: {leader_node_id}")
+        print(f"{leader_node_id}")
         exit(0)
     else:
         print("Failed to retrieve leader node ID.")

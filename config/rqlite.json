@@ -1,5 +1,5 @@
 {
-    "mode": "Reproduce",
-    "system": "rqlite",
-    "interval": 30
+  "mode": "Reproduce",
+  "system": "rqlite",
+  "interval": 30
 }
