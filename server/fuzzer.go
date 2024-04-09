@@ -37,7 +37,7 @@ func (fu *Fuzzer) start() {
 		Q:        rand.Float64(),
 	})
 	fu.opList = append(fu.opList, &DeleteFTPOp{
-		betaDist: distuv.Beta{Alpha: 1000, Beta: 1, Src: rand.NewSource(rand.Uint64())},
+		betaDist: distuv.Beta{Alpha: 1, Beta: 1, Src: rand.NewSource(rand.Uint64())},
 		N:        1,
 		Q:        rand.Float64(),
 	})
