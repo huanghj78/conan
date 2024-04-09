@@ -673,11 +673,14 @@ func (n *NetworkTransport) handleCommand(r *bufio.Reader, dec *codec.Decoder, en
 		if isHeartbeat {
 			labels = []metrics.Label{{Name: "rpcType", Value: "Heartbeat"}}
 		} else {
-			// // cpfi-begin
-			// if ok := BeforeSendReq(&req); !ok {
-			// 	return nil
+			// cpfi-begin
+			// if len(req.Entries) > 0 {
+			// 	if ok := BeforeSendReq(&req); !ok {
+			// 		return nil
+			// 	}
 			// }
-			// // cpfi-end
+
+			// cpfi-end
 			labels = []metrics.Label{{Name: "rpcType", Value: "AppendEntries"}}
 		}
 	case rpcRequestVote:
@@ -728,13 +731,13 @@ func (n *NetworkTransport) handleCommand(r *bufio.Reader, dec *codec.Decoder, en
 		return ErrTransportShutdown
 	}
 
-	// // cpfi-begin
+	// cpfi-begin
 	// if !isHeartbeat {
 	// 	if ok := AfterSendReq(&req); !ok {
 	// 		return nil
 	// 	}
 	// }
-	// // cpfi-end
+	// cpfi-end
 
 	// Wait for response
 RESP:

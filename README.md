@@ -77,10 +77,28 @@ Conan
 ```
 docker-compose -f ./systems/etcd/docker-compose.yaml up
 ```
-* Notify server 
+* Notify server to process client's request
 ```
-./reproduce/reproduce ./sequences/etcd-17332.json
+./reproduce/reproduce ./sequences/rqlite-1712.json
 ```
+* Run workload to trigger fault injection
+```
+rqlite -H 172.16.237.100 -p 2379
+Welcome to the rqlite CLI.
+Enter ".help" for usage hints.
+Connected to http://172.16.237.100:2379 running version 8
+172.16.237.100:2379> insert into t values(1)
+172.16.237.100:2379> insert into t values(1)
+```
+
+* Bug is triggered
+![result](./images/res.png)
+![log 1](./images/log-1.png)
+![log 2](./images/log-2.png)
+
+### Support new target system
+
+
 
 
 

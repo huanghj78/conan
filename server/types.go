@@ -58,6 +58,7 @@ func (fp FaultPoint) isMatch(f string) bool {
 
 func (fp FaultPoint) run(ch chan string, msg *client.CPFI_msg) {
 	for _, action := range fp.faultActionList {
+		logger.Infoln("Inject", action.getActionDetail())
 		go action.run(ch, msg)
 	}
 }

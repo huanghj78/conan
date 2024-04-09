@@ -507,9 +507,12 @@ func (r *Raft) pipelineSend(s *followerReplication, p AppendPipeline, nextIdx *u
 		return true
 	}
 	// cpfi-begin
-	// if ok := BeforeSendReq(req); !ok {
-	// 	return
-	// }
+	if len(req.Entries) > 0 {
+		if ok := BeforeSendReq(req); !ok {
+			return
+		}
+	}
+
 	// cpfi-end
 
 	// Pipeline the append entries
@@ -524,9 +527,12 @@ func (r *Raft) pipelineSend(s *followerReplication, p AppendPipeline, nextIdx *u
 		atomic.StoreUint64(nextIdx, last.Index+1)
 	}
 	// cpfi-begin
-	// if ok := AfterSendReq(req); !ok {
-	// 	return
-	// }
+	if len(req.Entries) > 0 {
+		if ok := AfterSendReq(req); !ok {
+			return
+		}
+	}
+
 	// cpfi-end
 	return false
 }

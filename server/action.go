@@ -17,7 +17,7 @@ const (
 
 const (
 	EnumNone         string = "None"
-	EnumRestartNode  string = "RestartNode"
+	EnumRestartNode  string = "EnumRestartNode"
 	EnumNetworkLoss  string = "EnumNetworkLoss"
 	EnumNetworkDelay string = "EnumNetworkDelay"
 	EnumCPUHog       string = "EnumCPUHog"
@@ -44,6 +44,7 @@ type NoneAction struct {
 
 func (a *NoneAction) setArgs() {}
 func (a *NoneAction) run(ch chan string, msg *client.CPFI_msg) {
+	logger.Infoln("Here is None")
 	ch <- Normal
 }
 

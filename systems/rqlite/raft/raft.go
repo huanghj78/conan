@@ -392,13 +392,13 @@ func (r *Raft) runCandidate() {
 			r.processRPC(rpc)
 
 		case vote := <-voteCh:
-			r.logger.Warn("hogar vote.Term=", vote.Term)
-			r.logger.Warn("hogar r.getCurrentTerm=", r.getCurrentTerm())
+			// r.logger.Warn("hogar vote.Term=", vote.Term)
+			// r.logger.Warn("hogar r.getCurrentTerm=", r.getCurrentTerm())
 			r.mainThreadSaturation.working()
 			// Check if the term is greater than ours, bail
 			if vote.Term > r.getCurrentTerm() {
 				r.logger.Debug("newer term discovered, fallback to follower", "term", vote.Term)
-				r.logger.Warn("hogar newer term discovered, fallback to follower", term, vote.Term)
+				// r.logger.Warn("hogar newer term discovered, fallback to follower", term, vote.Term)
 				r.setState(Follower)
 				r.setCurrentTerm(vote.Term)
 				return
@@ -1469,21 +1469,30 @@ func (r *Raft) appendEntries(rpc RPC, a *AppendEntriesRequest) {
 	var rpcErr error
 	defer func() {
 		// cpfi-begin
-		// if ok := BeforeSendAck(resp); !ok {
-		// 	return
-		// }
+		if len(a.Entries) > 0 {
+			if ok := BeforeSendAck(resp); !ok {
+				return
+			}
+		}
+
 		// cpfi-end
 		rpc.Respond(resp, rpcErr)
 		// cpfi-begin
-		// if ok := AfterSendAck(resp); !ok {
-		// 	return
-		// }
+		if len(a.Entries) > 0 {
+			if ok := AfterSendAck(resp); !ok {
+				return
+			}
+		}
+
 		// cpfi-end
 	}()
 	// cpfi-begin
-	// if ok := BeforeRecvReq(a); !ok {
-	// 	return
-	// }
+	if len(a.Entries) > 0 {
+		if ok := BeforeRecvReq(a); !ok {
+			return
+		}
+	}
+
 	// cpfi-end
 	// Ignore an older term
 	if a.Term < r.getCurrentTerm() {

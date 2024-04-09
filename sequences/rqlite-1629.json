@@ -1,3 +1,7 @@
 [
-    {"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumNetworkLoss 100 2 10,EnumMessageFault false false false 0 0"}
+    {"msgType":"MsgApp","who":"Leader","when":"After","faultActionList":"EnumNetworkLoss 100 2 30,EnumMessageFault true false false 0 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"After","faultActionList":"EnumMessageFault fasle false false 0 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"After","faultActionList":"EnumMessageFault fasle false false 0 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"After","faultActionList":"EnumMessageFault fasle false false 0 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"After","faultActionList":"EnumNetworkLoss 100 3 30,EnumMessageFault true false false 0 0"}
 ]

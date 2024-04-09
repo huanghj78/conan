@@ -167,8 +167,8 @@ func (i *Injector) handleAppendEntries(notification *AppendEntriesNotification) 
 		ch <- ok
 		return
 	} else {
+		i.cursor += 1
 		logger.Infoln("Inject Fault!")
 		fp.run(ch, msg)
-		i.cursor += 1
 	}
 }
