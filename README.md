@@ -93,8 +93,25 @@ Connected to http://172.16.237.100:2379 running version 8
 
 * Bug is triggered
 ![result](./images/res.png)
-![log 1](./images/log-1.png)
-![log 2](./images/log-2.png)
+```
+2024/04/09 20:21:34 [INFO] /root/Conan/server/server.go:131 Start in Reproduce mode
+2024/04/09 20:21:34 [INFO] /root/Conan/server/server.go:132 Target System is rqlite
+2024/04/09 20:21:34 [INFO] /root/Conan/server/server.go:32 Start Server....
+2024/04/09 20:21:34 [INFO] /root/Conan/server/checker.go:19 Checker start
+2024/04/09 20:21:34 [INFO] /root/Conan/server/monitor.go:26 Monitor start
+2024/04/09 20:21:34 [INFO] /root/Conan/server/injector.go:19 Injector start
+2024/04/09 20:22:30 [INFO] /root/Conan/server/injector.go:69 reproduce seq: &[{MsgApp Leader Before EnumMessageFault false false true 0 -4} {MsgApp Leader Before EnumMessageFault false false fasle 0 0} {MsgApp Leader Before EnumMessageFault false false fasle 0 0} {MsgApp Leader Before EnumMessageFault false false fasle 0 0} {MsgApp Leader Before EnumRestartNode 2,EnumMessageFault false false false 0 0}]
+2024/04/09 20:22:30 [INFO] /root/Conan/server/injector.go:145 Reproduce seq [FTP Before Leader MsgApp][FIP EnumMessageFault  Modify term -4 ][FTP Before Leader MsgApp][FIP EnumMessageFault  Modify term 0 ][FTP Before Leader MsgApp][FIP EnumMessageFault  Modify term 0 ][FTP Before Leader MsgApp][FIP EnumMessageFault  Modify term 0 ][FTP Before Leader MsgApp][FIP EnumRestartNode Node2][FIP EnumMessageFault ]
+2024/04/09 20:22:30 [INFO] /root/Conan/server/coordinator.go:93 Start Reproduce &{0xc000028300 /root/Conan/sequences/rqlite-1712.json}
+2024/04/09 20:22:33 [INFO] /root/Conan/server/injector.go:171 Inject Fault!
+2024/04/09 20:22:33 [INFO] /root/Conan/server/types.go:61 Inject EnumMessageFault  Modify term -4 
+2024/04/09 20:22:34 [INFO] /root/Conan/server/action.go:119 New term is 18446744073709551615
+2024/04/09 20:23:07 [INFO] /root/Conan/server/injector.go:171 Inject Fault!
+2024/04/09 20:23:07 [INFO] /root/Conan/server/types.go:61 Inject EnumRestartNode Node2
+2024/04/09 20:23:07 [INFO] /root/Conan/server/types.go:61 Inject EnumMessageFault 
+2024/04/09 20:23:09 [INFO] /root/Conan/server/action.go:184 Restart Node2
+
+```
 
 ### Support new target system
 
