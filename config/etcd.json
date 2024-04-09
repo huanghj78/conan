@@ -1,5 +1,5 @@
 {
-    "mode": "Detect",
-    "system": "etcd",
-    "interval": 25
+  "mode": "Reproduce",
+  "system": "etcd",
+  "interval": 25
 }

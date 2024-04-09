@@ -157,7 +157,7 @@ func (a *MessageFaultAction) getArgs() string {
 	if a.isOmit {
 		omitStr = "true"
 	}
-	logger.Infoln(a.delayTime, a.modifyDelta)
+	// logger.Infoln(a.delayTime, a.modifyDelta)
 	return fmt.Sprintf("%s %s %s %s %s", delayStr, omitStr, modifyStr, strconv.FormatInt(a.delayTime.Milliseconds(), 10), strconv.Itoa(a.modifyDelta))
 }
 

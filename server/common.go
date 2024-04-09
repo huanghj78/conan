@@ -51,12 +51,14 @@ func isMatch(no AppendEntriesNotification, fp FaultPoint) bool {
 }
 
 func checkConstraints(seq *FaultSequence) *FaultSequence {
+	logger.Infoln(len(seq.seq))
 	for _, fp := range seq.seq {
 		ac := fp.faultActionList[len(fp.faultActionList)-1]
 		if ac.getActionType() != EnumMessageFault {
 			var action Action
 			action = &MessageFaultAction{}
 			action.setArgs()
+			fp.faultActionList = make([]Action, 0)
 			fp.faultActionList = append(fp.faultActionList, action)
 		}
 		// 2
@@ -86,6 +88,7 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 			curActionType := ac.getActionType()
 			if curActionType == lastActionType {
 				if curActionType == EnumRestartNode {
+					fp.faultActionList = make([]Action, 0)
 					fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
 				} else if curActionType == EnumNetworkDelay {
 					Lastid := ""
@@ -96,7 +99,9 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 					if CurAc, ok := fp.faultActionList[idx-1].(*NetworkDelayAction); ok {
 						Curid = strings.Split(CurAc.getArgs(), " ")[1]
 					}
+					logger.Infoln(Lastid, Curid)
 					if Lastid == Curid {
+						fp.faultActionList = make([]Action, 0)
 						fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
 					}
 				} else if curActionType == EnumNetworkLoss {
@@ -109,6 +114,7 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 						Curid = strings.Split(CurAc.getArgs(), " ")[1]
 					}
 					if Lastid == Curid {
+						fp.faultActionList = make([]Action, 0)
 						fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
 					}
 				} else if curActionType == EnumCPUHog {
@@ -121,6 +127,7 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 						Curid = strings.Split(CurAc.getArgs(), " ")[1]
 					}
 					if Lastid == Curid {
+						fp.faultActionList = make([]Action, 0)
 						fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
 					}
 				}
@@ -130,6 +137,7 @@ func checkConstraints(seq *FaultSequence) *FaultSequence {
 		for idx, ac := range fp.faultActionList {
 			if ac.getActionType() == EnumMessageFault {
 				if idx != len(fp.faultActionList)-1 {
+					fp.faultActionList = make([]Action, 0)
 					fp.faultActionList = append(fp.faultActionList[:idx], fp.faultActionList[idx+1:]...)
 				}
 			}

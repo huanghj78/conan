@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   node1:
-    image: rqlited:conan
+    image: rqlite:conan
     volumes:
       - node1-data:/rqlite-data
     expose:
@@ -19,7 +19,7 @@ services:
       - 172.16.237.100:2380
       - /rqlite-data
   node2:
-    image: rqlited:conan
+    image: rqlite:conan
     volumes:
       - node2-data:/rqlite-data
     networks:
@@ -40,7 +40,7 @@ services:
       - /rqlite-data
 
   node3:
-    image: rqlited:conan
+    image: rqlite:conan
     volumes:
       - node3-data:/rqlite-data
     networks:

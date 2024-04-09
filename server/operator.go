@@ -335,32 +335,10 @@ func (op *ModifyFIPOp) run(seedSeq *FaultSequence) *FaultSequence {
 			nodeNum: newNum,
 		}
 	} else if action.getActionType() == EnumNetworkLoss {
-		// percent := rand.Intn(100) + 1
-		// nodeNum := rand.Intn(3) + 1
-		// duration := rand.Intn(5) + 1
-		// logger.Infof("Modify NetworkLoss %d at node%d for %ds", percent, nodeNum, duration)
 		seq.seq[seqIndex].faultActionList[fpIndex].setArgs()
 	} else if action.getActionType() == EnumNetworkDelay {
-		// delayTime := rand.Intn(1000) + 500
-		// nodeNum := rand.Intn(3) + 1
-		// duration := rand.Intn(5) + 1
-		// logger.Infof("Modify NetworkDelay %dms for %ds at node%d", delayTime, duration, nodeNum)
-		// seq.seq[seqIndex].faultActionList[fpIndex] = &NetworkDelayAction{
-		// 	delayTime: delayTime,
-		// 	nodeNum:   nodeNum,
-		// 	duration:  nodeNum,
-		// }
 		seq.seq[seqIndex].faultActionList[fpIndex].setArgs()
 	} else if action.getActionType() == EnumCPUHog {
-		// percent := rand.Intn(100) + 1
-		// nodeNum := rand.Intn(3) + 1
-		// duration := rand.Intn(5) + 1
-		// logger.Infof("Modify CPUHog %d for %ds at node%d", percent, duration, nodeNum)
-		// seq.seq[seqIndex].faultActionList[fpIndex] = &CPUHogAction{
-		// 	percent:  percent,
-		// 	nodeNum:  nodeNum,
-		// 	duration: duration,
-		// }
 		seq.seq[seqIndex].faultActionList[fpIndex].setArgs()
 	} else if action.getActionType() == EnumMessageFault {
 		seq.seq[seqIndex].faultActionList[fpIndex].setArgs()

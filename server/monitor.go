@@ -34,7 +34,7 @@ func (m *Monitor) initialCollect() {
 func (m *Monitor) setupCluster() {
 	logger.Infof("Setup %s cluster\n", targetSystem)
 	cmd := fmt.Sprintf("%s/systems/%s/setup.sh", projectPath, targetSystem)
-	logger.Infoln(cmd)
+	// logger.Infoln(cmd)
 	output, err := exec.Command("sh", "-c", cmd).Output()
 	if err != nil {
 		logger.Errorln(string(output))
@@ -50,18 +50,17 @@ func (m *Monitor) runWorkload(seq *FaultSequence) {
 	isStatus := 0
 
 	cmd := fmt.Sprintf("%s/systems/%s/findLeader.sh", projectPath, targetSystem)
-	logger.Infoln(cmd)
+	// logger.Infoln(cmd)
 	output, err := exec.Command("sh", "-c", cmd).Output()
 	if err != nil {
 		logger.Errorln("Find leader error")
 		os.Exit(1)
 	}
 	leaderNum := string(output)
-	logger.Infoln("Current leader num", leaderNum)
-
-	logger.Infof("Run %s workload\n", targetSystem)
+	logger.Infof("Current leader num: %s", leaderNum)
+	logger.Infof("Run %s workload", targetSystem)
 	cmd = fmt.Sprintf("python3 %s/systems/%s/workload/workload.py", projectPath, targetSystem)
-	logger.Infoln(cmd)
+	// logger.Infoln(cmd)
 	startTime := time.Now()
 	output, err = exec.Command("sh", "-c", cmd).Output()
 	if err != nil {
@@ -84,7 +83,7 @@ func (m *Monitor) runWorkload(seq *FaultSequence) {
 
 	}
 	newLeaderNum := string(output)
-	logger.Infoln("Current leader num", newLeaderNum)
+	logger.Infof("Current leader num: %s", newLeaderNum)
 	if leaderNum != newLeaderNum {
 		isElection = 1
 	}
