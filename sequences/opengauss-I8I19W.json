@@ -1,0 +1,5 @@
+[
+    {"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumMessageFault true true false 1000 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumMessageFault true true false 1000 0"},
+    {"msgType":"MsgApp","who":"Leader","when":"Before","faultActionList":"EnumMessageFault true true false 1000 0"}
+]

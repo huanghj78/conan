@@ -118,14 +118,14 @@ echo "set node1's run mode"
 docker exec  -e GAUSSHOME=/home/opengauss/openGauss/install node1 env LD_LIBRARY_PATH=/home/opengauss/openGauss/install/lib /home/opengauss/openGauss/install/bin/gs_ctl setrunmode -D /home/opengauss/opengauss/data -x normal
 # exit
 echo "Copy file to docker"
-{ docker cp /root/cpfi-v2/client/client_c/libdcfi.so node1:/home/opengauss/openGauss/install/lib/libdcfi.so &
-  docker cp /root/cpfi-v2/systems/opengauss/new_so/libdcf.so node1:/home/opengauss/openGauss/install/lib/libdcf.so &
+{ docker cp $CONAN_PATH/client/client_c/libdcfi.so node1:/home/opengauss/openGauss/install/lib/libdcfi.so &
+  docker cp $CONAN_PATH/systems/opengauss/new_so/libdcf.so node1:/home/opengauss/openGauss/install/lib/libdcf.so &
 
-  docker cp /root/cpfi-v2/client/client_c/libdcfi.so node2:/home/opengauss/openGauss/install/lib/libdcfi.so &
-  docker cp /root/cpfi-v2/systems/opengauss/new_so/libdcf.so node2:/home/opengauss/openGauss/install/lib/libdcf.so &
+  docker cp $CONAN_PATH/client/client_c/libdcfi.so node2:/home/opengauss/openGauss/install/lib/libdcfi.so &
+  docker cp $CONAN_PATH/systems/opengauss/new_so/libdcf.so node2:/home/opengauss/openGauss/install/lib/libdcf.so &
 
-  docker cp /root/cpfi-v2/client/client_c/libdcfi.so node3:/home/opengauss/openGauss/install/lib/libdcfi.so &
-  docker cp /root/cpfi-v2/systems/opengauss/new_so/libdcf.so node3:/home/opengauss/openGauss/install/lib/libdcf.so &
+  docker cp $CONAN_PATH/client/client_c/libdcfi.so node3:/home/opengauss/openGauss/install/lib/libdcfi.so &
+  docker cp $CONAN_PATH/systems/opengauss/new_so/libdcf.so node3:/home/opengauss/openGauss/install/lib/libdcf.so &
   wait
 }
 
@@ -160,9 +160,9 @@ echo "Copy file to docker"
 }
 
 {
-  docker cp /root/cpfi-v2/scripts/chaosblade-1.3.0 node1:/home/opengauss &
-  docker cp /root/cpfi-v2/scripts/chaosblade-1.3.0 node2:/home/opengauss &
-  docker cp /root/cpfi-v2/scripts/chaosblade-1.3.0 node3:/home/opengauss &
+  docker cp $CONAN_PATH/scripts/chaosblade-1.3.0 node1:/home/opengauss &
+  docker cp $CONAN_PATH/scripts/chaosblade-1.3.0 node2:/home/opengauss &
+  docker cp $CONAN_PATH/scripts/chaosblade-1.3.0 node3:/home/opengauss &
   wait
 }
 

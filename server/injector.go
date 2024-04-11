@@ -162,8 +162,8 @@ func (i *Injector) handleAppendEntries(notification *AppendEntriesNotification) 
 	// 当前的FaultPoint
 	fp := i.curSeq.seq[i.cursor]
 	if !isMatch(*notification, fp) {
-		logger.Infoln("notification: ", notification.when, notification.who, notification.msg.Type)
-		logger.Infoln("FaultPoint: ", fp.when, fp.who, fp.msgType)
+		// logger.Infoln("notification: ", notification.when, notification.who, notification.msg.Type)
+		// logger.Infoln("FaultPoint: ", fp.when, fp.who, fp.msgType)
 		ch <- ok
 		return
 	} else {

@@ -52,7 +52,7 @@ Conan
 ```
 
 ## Getting Started
-### Initial directory, pull docker images, complie conan server
+### Initial directory, pull docker images, build conan server
 ```
 ./init.sh
 ```
@@ -114,8 +114,38 @@ Connected to http://172.16.237.100:2379 running version 8
 ```
 
 ### Support new target system
+1. Instrumentation
 
+Find fault trigger points in the source code and instrument the Conan client. 
+Conan client has supported Golang, C, Rust and Java.
 
+2. Prepare necessary scripts 
+* Create a directory `systems/new_system`
+* Define how to setup the target cluster in `new_system/setup.py` and `new_system/docker-compose.yaml`
+* Define workload in `new_system/workload/workload.py`
+* Define oracle in `new_system/workload/check.py`
+* Define how to find leader for monitor in `new_system/findLeader.sh`
+* Modify config to inject fault scenario in `new_system/fault`
+    * cpu_hog.sh
+    * network_delay.sh
+    * network_loss.sh
+    * restart_node.sh
+
+3. Create Configuration file in `config/new_system.json`
+
+```
+{
+  "mode": "Detect/Reproduce",
+  "system": "new_system",
+  "interval": # Must be longer than your system deployment duration
+}
+```
+
+4. Run
+
+```
+./run.sh new_system Detect/Reproduce
+```
 
 
 

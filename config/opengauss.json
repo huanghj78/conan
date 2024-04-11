@@ -1,5 +1,5 @@
 {
-    "mode": "Reproduce",
-    "system": "opengauss",
-    "interval": 520
+  "mode": "Reproduce",
+  "system": "opengauss",
+  "interval": 520
 }
