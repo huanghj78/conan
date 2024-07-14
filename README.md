@@ -1,4 +1,4 @@
-# Conan: Detect Consensus Issues in Distributed Databases using Multi-Feedback Fuzzing with Hybrid Fault Sequences
+# Conan: Uncover Consensus Issues in Distributed Databases Using Fuzzing-driven Fault Injection
 Conan is a testing framework for detecting consensus issues in distributed databases by fault injection. 
 
 
