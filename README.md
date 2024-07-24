@@ -3,11 +3,11 @@ Conan is a testing framework for detecting consensus issues in distributed datab
 
 
 * We observe that status changes improve the efficiency of generating fault sequences. Hence, Conan monitors status changes as feedback to guide fuzzing for the effective generation of fault sequences. 
-* We observe that solely using coarse-grained faults is not sufficient for bug detection. Hence, Conan combines fine-grained and coarse-grained faults to form hybridf ault sequences to uncover consensus issues. 
+* We observe that solely using coarse-grained faults is not sufficient for issue detection. Hence, Conan combines fine-grained and coarse-grained faults to form hybrid fault sequences to uncover consensus issues. 
 
-## Bug Detected by Conan
+## Issues Detected by Conan
 We appied Conan to 3 widely used distributed databases, including etcd, rqlite and openGauss. Conan successfully detects 7  previous-unknown issues and 6 of them have been confirmed by developers. 
-| Bug ID | Description | 
+| Issue ID | Description | 
 |-----|-----|
 | [etcd-17332](https://github.com/etcd-io/etcd/issues/17332) | Inconsistent behaviors between server and client. | 
 | [rqlite-1629](https://github.com/rqlite/rqlite/pull/1629) | Duplicate data insertion. | 
