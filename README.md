@@ -2,7 +2,7 @@
 Conan is a testing framework for detecting consensus issues in distributed databases by fault injection. 
 
 
-* We observe that status changes improve the efficiency of generating fault sequences. Hence, Conan monitors status changes as feedback to guide fuzzing for the effective generation of fault sequences. 
+* We observe that state changes improve the efficiency of generating fault sequences. Hence, Conan monitors state changes as feedback to guide fuzzing for the effective generation of fault sequences. 
 * We observe that solely using coarse-grained faults is not sufficient for issue detection. Hence, Conan combines fine-grained and coarse-grained faults to form hybrid fault sequences to uncover consensus issues. 
 
 ## Issues Uncovered by Conan
