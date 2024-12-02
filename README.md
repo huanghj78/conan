@@ -6,7 +6,7 @@ Conan is a testing framework for detecting consensus issues in distributed datab
 * We observe that solely using coarse-grained faults is not sufficient for issue detection. Hence, Conan combines fine-grained and coarse-grained faults to form hybrid fault sequences to uncover consensus issues. 
 
 ## Issues Uncovered by Conan
-We appied Conan to 3 widely used distributed databases, including etcd, rqlite and openGauss. Conan successfully uncovers 7  previous-unknown issues and 6 of them have been confirmed by developers. 
+We appied Conan to 3 widely used distributed databases, including etcd, rqlite and openGauss. Conan successfully uncovers 7  previous-unknown issues. 
 | Issue ID | Description | 
 |-----|-----|
 | [etcd-17332](https://github.com/etcd-io/etcd/issues/17332) | Inconsistent behaviors between server and client. | 
